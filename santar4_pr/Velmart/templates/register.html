@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+    <body>
+        <h2> Reqistration for Velmart</h2>
+        {% if messages %}
+            {% for messages in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+    <from method="POST">
+        { csrf.token % }
+        {{ form.as_p }}
+        <button type="submit"> Sign up </button>
+    </from>
+
+    <p> You are already signed? <a href="{% url 'login' %}">Enter account</a></p>
+    </body>
+</html>
