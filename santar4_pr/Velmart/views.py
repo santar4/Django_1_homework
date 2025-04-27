@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from django.db.models import Avg
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -7,9 +6,7 @@ from django.contrib import messages
 from .forms import RegistrationForm, CallBackForm, AdminRegistrationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
-
 from .models import Movie
-
 
 def index(request):
     context = {}

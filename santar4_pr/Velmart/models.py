@@ -12,27 +12,16 @@ class Worker(models.Model):
     jop_position = models.CharField(max_length=150)
     phone_number = models.IntegerField()
 
-
 class CallBack(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     subject = models.CharField(max_length=200)
     message = models.TextField()
 
-
-
 class Author(models.Model):
     name = models.CharField(max_length=100, verbose_name="Name")
     surname = models.CharField(max_length=100, verbose_name="Surname")
     age = models.IntegerField(verbose_name="Age")
-
-
-
-
-
-
-
-
 
 
 class Producer(models.Model):
@@ -68,12 +57,6 @@ class User(models.Model):
     def __str__(self):
         return self.nickname
 
-
-
-
-
-
-
 class Comment(models.Model):
     user = ForeignKey(User, on_delete=models.CASCADE)
     movie = ForeignKey(Movie, on_delete=models.CASCADE)
@@ -82,12 +65,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
-
-
-
-
-
-
 
 class Book(models.Model):
     title = models.CharField(max_length=100, verbose_name="Title")
@@ -98,8 +75,6 @@ class Book(models.Model):
 
     def __str__(self):
         return f"{self.title} by {self.author}"
-
-
 
 
 class Rubrick(models.Model):
