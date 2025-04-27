@@ -1,4 +1,3 @@
-# Django_Market_Project
+# Django_Market_Project / Django_Movies_Project
 
 
-## Ініціалізовано міграції та першу модельку
