@@ -1,11 +1,14 @@
 from datetime import datetime
 
+from django.db.models import Avg
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import RegistrationForm, CallBackForm, AdminRegistrationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
+
+from .models import Movie
 
 
 def index(request):
@@ -60,9 +63,6 @@ def login_user(request):
     return render(request, "login.html", {'form': form})
 
 
-
-
-
 def call_back(request):
     if request.method == "POST":
         form = CallBackForm(request.POST)
@@ -81,8 +81,6 @@ def call_back_thanks(request):
     return render(request, "call_back_thanks.html")
 
 
-
-
 def register_admin(request):
     if request.method == "POST":
         form = AdminRegistrationForm(request.POST)
@@ -92,4 +90,17 @@ def register_admin(request):
             return redirect('index')
     else:
         form = AdminRegistrationForm()
-    return render(request, "register_admin.html",context={'form': form})
+    return render(request, "register_admin.html", context={'form': form})
+
+
+def movies_list(request):
+    movies = Movie.objects.all()
+    return render(request, "main_page.html", context={'movies': movies})
+
+
+def movie_page(request, id):
+    movie = Movie.objects.get(pk=id)
+    average_rate = Movie.objects.aggregate(average=Avg('rate'))['average']
+    return render(request, "movie_page.html", context={'movie': movie, 'average_rate': average_rate})
+
+

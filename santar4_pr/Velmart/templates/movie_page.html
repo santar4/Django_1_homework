@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+      <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+<div class="movie-detail">
+    <h1>{{ movie.title }}</h1>
+    <h3>Genre: {{ movie.genre }}</h3>
+    <p><b>Producer:</b> {{ movie.producer }}</p>
+    <p><b>Creation Date:</b> {{ movie.creation_date }}</p>
+    <p><b>Year:</b> {{ movie.year|date:"Y" }}</p>
+    <p><b>Country:</b> {{ movie.country }}</p>
+    <p><b>Rate:</b> {{ movie.rate }}</p>
+
+    <a href="{% url 'movies_list' %}" class="back-button">← Back to Movies</a>
+</div>
+
+</body>
+</html>
